@@ -7,8 +7,8 @@ const categorie = new Router();
 
 categorie.post('/',adminCheck,categorieController.create);
 categorie.get('/', categorieController.getAll);
-categorie.delete('/:id', categorieController.destroy);
-categorie.patch('/:id', categorieController.update);
+categorie.delete('/:id', adminCheck,categorieController.destroy);
+categorie.patch('/:id', adminCheck,categorieController.update);
 
 
 export default categorie;

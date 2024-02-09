@@ -1,15 +1,15 @@
 import { Router } from 'express';
 
 import productController from '../controllers/productController.js';
-
+import adminCheck from '../middleware/checkRoleMiddleware.js';
 
 const product = new Router();
 
-product.post('/', productController.create);
+product.post('/', adminCheck,productController.create);
 product.get('/', productController.getAll);
 product.get('/:id', productController.getOne);
-product.delete('/:id', productController.destroy);
-product.patch('/:id',productController.update);
+product.delete('/:id', adminCheck,productController.destroy);
+product.patch('/:id', adminCheck,productController.update);
 
 
 export default product;
